@@ -9,15 +9,15 @@
   <style>
     /* ── Variables ─────────────────────────────────────────── */
     :root {
-      --bg:         #0a0a0f;
-      --surface:    #111118;
-      --border:     #1e1e2e;
+      --bg:         #fafafa;
+      --surface:    #ffffff;
+      --surface2:   #f4f4f5;
+      --border:     #e4e4e7;
       --accent:     #6c63ff;
-      --accent2:    #00d4ff;
-      --text:       #e4e4e7;
+      --accent2:    #0891b2;
+      --text:       #18181b;
       --text-muted: #71717a;
-      --code-bg:    #16161e;
-      --card-hover: #16161e;
+      --code-bg:    #f4f4f5;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,8 +30,8 @@
       font-size: 16px;
     }
 
-    a { color: var(--accent2); text-decoration: none; transition: color .2s; }
-    a:hover { color: #fff; }
+    a { color: var(--accent); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--accent); text-decoration: underline; }
 
     /* ── Layout ───────────────────────────────────────────── */
     .container {
@@ -46,109 +46,76 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 0 28px;
-      height: 56px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(10,10,15,.85);
+      background: rgba(255,255,255,.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       font-weight: 700;
-      font-size: 15px;
-      color: #fff;
-      letter-spacing: .02em;
+      font-size: 16px;
+      color: var(--text);
+      letter-spacing: -.01em;
     }
-
     .nav-logo span { color: var(--accent); }
 
-    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-size: 13px;
       color: var(--text-muted);
       font-weight: 500;
-      letter-spacing: .03em;
     }
     .nav-links a:hover { color: var(--text); }
 
     /* ── Hero ──────────────────────────────────────────────── */
     .hero {
-      padding: 160px 0 100px;
-      position: relative;
-      overflow: hidden;
+      padding: 160px 0 80px;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -120px; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse, rgba(108,99,255,.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 5px 14px;
+    .hero-eyebrow {
       font-size: 12px;
-      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
       font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 28px;
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 6px #22c55e;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .4; }
     }
 
     .hero h1 {
-      font-size: clamp(42px, 7vw, 68px);
+      font-size: clamp(40px, 6vw, 62px);
       font-weight: 700;
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 20px;
       letter-spacing: -.03em;
+      color: var(--text);
     }
 
-    .hero h1 .line1 { color: #fff; }
-    .hero h1 .line2 {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
     }
 
     .hero-desc {
       font-size: 17px;
       color: var(--text-muted);
-      max-width: 520px;
+      max-width: 540px;
       margin-bottom: 36px;
-      font-weight: 300;
+      font-weight: 400;
+      line-height: 1.8;
     }
 
-    .hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 11px 22px;
+      padding: 10px 20px;
       border-radius: 8px;
       font-size: 14px;
       font-weight: 500;
@@ -156,6 +123,7 @@
       transition: all .2s;
       border: none;
       font-family: inherit;
+      text-decoration: none;
     }
 
     .btn-primary {
@@ -164,16 +132,16 @@
     }
     .btn-primary:hover { background: #5a52e0; color: #fff; text-decoration: none; }
 
-    .btn-ghost {
-      background: var(--code-bg);
+    .btn-outline {
+      background: transparent;
       color: var(--text);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
     }
-    .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); text-decoration: none; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
-    /* ── Section title ────────────────────────────────────── */
+    /* ── Section ─────────────────────────────────────────── */
     .section { padding: 72px 0; }
-    .section + .section { padding-top: 0; }
+    .section-top { padding-top: 0; }
 
     .section-label {
       font-size: 11px;
@@ -181,24 +149,31 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       font-family: 'JetBrains Mono', monospace;
     }
 
     .section-title {
       font-size: 26px;
       font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -.02em;
     }
 
     .section-sub {
       font-size: 14px;
       color: var(--text-muted);
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
-    /* ── About card ───────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── About ───────────────────────────────────────────── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -212,43 +187,47 @@
     .about-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
+      border-radius: 12px;
+      padding: 22px 24px;
     }
 
     .about-card h3 {
       font-size: 14px;
       font-weight: 600;
-      color: #fff;
-      margin-bottom: 10px;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .about-card p {
       font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     /* ── Skills ───────────────────────────────────────────── */
     .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
 
     .skill-chip {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: var(--surface);
+      gap: 7px;
+      background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 100px;
-      padding: 7px 16px;
+      padding: 6px 14px;
       font-size: 13px;
       font-weight: 500;
       color: var(--text);
-      transition: border-color .2s, color .2s;
+      transition: border-color .2s, color .2s, background .2s;
     }
 
     .skill-chip:hover {
-      border-color: var(--accent2);
-      color: var(--accent2);
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #f0eeff;
     }
 
     .skill-dot {
@@ -259,22 +238,22 @@
     }
 
     /* ── Projects ─────────────────────────────────────────── */
-    .projects { display: flex; flex-direction: column; gap: 16px; }
+    .projects { display: flex; flex-direction: column; gap: 14px; }
 
     .project-card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 14px;
-      padding: 28px;
-      transition: border-color .2s, background .2s;
+      padding: 26px 28px;
+      transition: border-color .2s, box-shadow .2s;
       display: block;
       color: var(--text);
       text-decoration: none;
     }
 
     .project-card:hover {
-      border-color: var(--accent2);
-      background: var(--card-hover);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(108,99,255,.08);
       color: var(--text);
       text-decoration: none;
     }
@@ -283,62 +262,62 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .project-icon {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      background: var(--code-bg);
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: var(--surface2);
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 17px;
       flex-shrink: 0;
     }
 
     .project-arrow {
       color: var(--text-muted);
-      font-size: 18px;
+      font-size: 16px;
       transition: transform .2s, color .2s;
+      line-height: 36px;
     }
     .project-card:hover .project-arrow {
-      transform: translate(3px, -3px);
-      color: var(--accent2);
+      transform: translate(2px, -2px);
+      color: var(--accent);
     }
 
     .project-name {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 8px;
     }
 
     .project-desc {
       font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.8;
+      margin-bottom: 14px;
+      line-height: 1.85;
     }
 
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 
     .tag {
       font-size: 11px;
       font-family: 'JetBrains Mono', monospace;
-      background: var(--code-bg);
+      background: var(--surface2);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 3px 10px;
+      padding: 2px 9px;
       border-radius: 100px;
     }
 
-    /* ── More projects placeholder ─────────────────────────── */
     .more-projects {
       text-align: center;
-      padding: 36px 0 0;
-      font-size: 14px;
+      padding: 28px 0 0;
+      font-size: 13px;
       color: var(--text-muted);
     }
 
@@ -355,24 +334,24 @@
 
     .contact-card {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
       padding: 20px;
       text-align: center;
       text-decoration: none;
       color: var(--text);
-      transition: border-color .2s, background .2s;
+      transition: border-color .2s, box-shadow .2s;
     }
 
     .contact-card:hover {
       border-color: var(--accent);
-      background: var(--card-hover);
+      box-shadow: 0 0 0 3px rgba(108,99,255,.07);
       color: var(--text);
       text-decoration: none;
     }
 
     .contact-icon {
-      font-size: 24px;
+      font-size: 22px;
       margin-bottom: 10px;
     }
 
@@ -387,24 +366,24 @@
     .contact-value {
       font-size: 13px;
       font-weight: 500;
-      color: #fff;
+      color: var(--text);
     }
 
     /* ── Footer ───────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 28px 0;
+      padding: 24px 0;
       text-align: center;
       font-size: 12px;
       color: var(--text-muted);
-      margin-top: 40px;
+      margin-top: 20px;
     }
 
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 580px) {
       .nav-links { display: none; }
-      .hero { padding: 120px 0 60px; }
-      .hero h1 { font-size: 38px; }
+      .hero { padding: 130px 0 60px; }
+      .hero h1 { font-size: 36px; }
     }
   </style>
 </head>
@@ -424,10 +403,10 @@
   <!-- ── Hero ─────────────────────────────────────────────── -->
   <section class="hero">
     <div class="container">
-      <div class="hero-badge">目前在职 · 接受机会</div>
+      <div class="hero-eyebrow">嵌入式工程师 · 嵌入式开发</div>
       <h1>
-        <span class="line1">我是 Casey，</span><br>
-        <span class="line2">嵌入式工程师。</span>
+        我是 Casey，<br>
+        <em>嵌入式工程师。</em>
       </h1>
       <p class="hero-desc">
         专注 MCU 固件开发 / FreeRTOS 实时系统 / CAN 总线通信，
@@ -435,13 +414,15 @@
       </p>
       <div class="hero-links">
         <a href="https://github.com/TechCasey" class="btn btn-primary" target="_blank">
-          GitHub →
+          GitHub ↗
         </a>
-        <a href="#projects" class="btn btn-ghost">看项目</a>
-        <a href="mailto:lqz8802@163.com" class="btn btn-ghost">✉ 发邮件</a>
+        <a href="mailto:lqz8802@163.com" class="btn btn-outline">✉ lqz8802@163.com</a>
+        <a href="#projects" class="btn btn-outline">看项目</a>
       </div>
     </div>
   </section>
+
+  <div class="divider"></div>
 
   <!-- ── About ───────────────────────────────────────────── -->
   <section class="section" id="about">
@@ -485,7 +466,7 @@
   </section>
 
   <!-- ── Skills ──────────────────────────────────────────── -->
-  <section class="section" id="skills">
+  <section class="section section-top">
     <div class="container">
       <div class="section-label">Skills</div>
       <div class="section-title">技术栈</div>
@@ -515,7 +496,7 @@
   </section>
 
   <!-- ── Projects ─────────────────────────────────────────── -->
-  <section class="section" id="projects">
+  <section class="section section-top">
     <div class="container">
       <div class="section-label">Projects</div>
       <div class="section-title">项目展示</div>
@@ -523,7 +504,7 @@
 
       <div class="projects">
 
-        <!-- 项目 1：FreeRTOS 工程样例 -->
+        <!-- 项目 1 -->
         <a href="https://github.com/TechCasey/Controller-FreeRTOS" class="project-card" target="_blank">
           <div class="project-top">
             <div class="project-icon">⚡</div>
@@ -544,37 +525,37 @@
           </div>
         </a>
 
-        <!-- 项目 2：占位项目，可自行添加 -->
-        <a href="#" class="project-card" onclick="return false;">
+        <!-- 项目 2：占位 -->
+        <div class="project-card" style="cursor:default;">
           <div class="project-top">
             <div class="project-icon">🔧</div>
-            <div class="project-arrow">↗</div>
+            <div class="project-arrow" style="opacity:.3;">↗</div>
           </div>
           <div class="project-name">你的下一个项目</div>
           <div class="project-desc">
-            项目描述占位在这里。你可以在 HTML 文件中搜索「你的下一个项目」，
-            把这段内容替换成你自己的项目介绍。
+            项目描述占位。在 HTML 中搜索「你的下一个项目」，
+            替换这段文字即可添加更多项目。每个卡片有图标、标题、描述和标签。
           </div>
           <div class="project-tags">
             <span class="tag">待补充</span>
           </div>
-        </a>
+        </div>
 
-        <!-- 项目 3：占位项目 -->
-        <a href="#" class="project-card" onclick="return false;">
+        <!-- 项目 3：占位 -->
+        <div class="project-card" style="cursor:default;">
           <div class="project-top">
             <div class="project-icon">🚀</div>
-            <div class="project-arrow">↗</div>
+            <div class="project-arrow" style="opacity:.3;">↗</div>
           </div>
           <div class="project-name">另一个项目</div>
           <div class="project-desc">
-            在 HTML 文件中搜索「另一个项目」，替换这段文字即可添加更多项目卡片。
-            每个卡片都有图标、标题、描述和标签，可以无限添加。
+            复制上方整段 project-card 块即可无限添加新项目。
+            搜索「项目 2：占位」快速定位。
           </div>
           <div class="project-tags">
             <span class="tag">待补充</span>
           </div>
-        </a>
+        </div>
 
       </div>
 
@@ -584,8 +565,8 @@
     </div>
   </section>
 
-  <!-- ── Contact ──────────────────────────────────────────── -->
-  <section class="section" id="contact">
+  <!-- ── Contact ─────────────────────────────────────────── -->
+  <section class="section section-top">
     <div class="container">
       <div class="section-label">Contact</div>
       <div class="section-title">联系方式</div>
