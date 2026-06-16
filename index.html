@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casey — 嵌入式工程师</title>
+  <title>Casey — Embedded Firmware Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ── Variables ─────────────────────────────────────────── */
     :root {
       --bg:         #fafafa;
       --surface:    #ffffff;
@@ -17,7 +16,6 @@
       --accent2:    #0891b2;
       --text:       #18181b;
       --text-muted: #71717a;
-      --code-bg:    #f4f4f5;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,110 +31,60 @@
     a { color: var(--accent); text-decoration: none; transition: color .2s; }
     a:hover { color: var(--accent); text-decoration: underline; }
 
-    /* ── Layout ───────────────────────────────────────────── */
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 28px; }
 
     /* ── Nav ──────────────────────────────────────────────── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 0 28px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255,255,255,.9);
-      backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; padding: 0 28px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,.9); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-logo {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text);
-      letter-spacing: -.01em;
-    }
+    .nav-logo { font-weight: 700; font-size: 16px; color: var(--text); letter-spacing: -.01em; }
     .nav-logo span { color: var(--accent); }
 
     .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+    .nav-links a { font-size: 13px; color: var(--text-muted); font-weight: 500; }
     .nav-links a:hover { color: var(--text); }
 
     /* ── Hero ──────────────────────────────────────────────── */
-    .hero {
-      padding: 160px 0 80px;
-    }
+    .hero { padding: 160px 0 80px; }
 
     .hero-eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
+      font-size: 12px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
       font-family: 'JetBrains Mono', monospace;
     }
 
     .hero h1 {
-      font-size: clamp(40px, 6vw, 62px);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      letter-spacing: -.03em;
+      font-size: clamp(40px, 6vw, 62px); font-weight: 700;
+      line-height: 1.15; margin-bottom: 20px; letter-spacing: -.03em;
       color: var(--text);
     }
 
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
 
     .hero-desc {
-      font-size: 17px;
-      color: var(--text-muted);
-      max-width: 540px;
-      margin-bottom: 36px;
-      font-weight: 400;
-      line-height: 1.8;
+      font-size: 17px; color: var(--text-muted);
+      max-width: 540px; margin-bottom: 36px;
+      font-weight: 400; line-height: 1.8;
     }
 
     .hero-links { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all .2s;
-      border: none;
-      font-family: inherit;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 8px; font-size: 14px;
+      font-weight: 500; cursor: pointer; transition: all .2s;
+      border: none; font-family: inherit; text-decoration: none;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
+    .btn-primary { background: var(--accent); color: #fff; }
     .btn-primary:hover { background: #5a52e0; color: #fff; text-decoration: none; }
 
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1.5px solid var(--border);
-    }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
     /* ── Section ─────────────────────────────────────────── */
@@ -144,242 +92,104 @@
     .section-top { padding-top: 0; }
 
     .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
       font-family: 'JetBrains Mono', monospace;
     }
 
-    .section-title {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-      letter-spacing: -.02em;
-    }
+    .section-title { font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: -.02em; }
+    .section-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 36px; }
 
-    .section-sub {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 36px;
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0;
-    }
+    .divider { height: 1px; background: var(--border); margin: 0; }
 
     /* ── About ───────────────────────────────────────────── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-    @media (max-width: 580px) {
-      .about-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 580px) { .about-grid { grid-template-columns: 1fr; } }
 
     .about-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px 24px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 24px;
     }
 
-    .about-card h3 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .about-card p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.85;
-    }
+    .about-card h3 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .about-card p { font-size: 13px; color: var(--text-muted); line-height: 1.85; }
 
     /* ── Skills ───────────────────────────────────────────── */
     .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
 
     .skill-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 13px; font-weight: 500; color: var(--text);
       transition: border-color .2s, color .2s, background .2s;
     }
 
-    .skill-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: #f0eeff;
-    }
+    .skill-chip:hover { border-color: var(--accent); color: var(--accent); background: #f0eeff; }
 
-    .skill-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
+    .skill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 
     /* ── Projects ─────────────────────────────────────────── */
     .projects { display: flex; flex-direction: column; gap: 14px; }
 
     .project-card {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 14px;
-      padding: 26px 28px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 26px 28px;
       transition: border-color .2s, box-shadow .2s;
-      display: block;
-      color: var(--text);
-      text-decoration: none;
+      display: block; color: var(--text); text-decoration: none;
     }
 
     .project-card:hover {
       border-color: var(--accent);
       box-shadow: 0 0 0 4px rgba(108,99,255,.08);
-      color: var(--text);
-      text-decoration: none;
+      color: var(--text); text-decoration: none;
     }
 
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
+    .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
 
     .project-icon {
-      width: 36px; height: 36px;
-      border-radius: 9px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-      flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 9px;
+      background: var(--surface2); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
     }
 
-    .project-arrow {
-      color: var(--text-muted);
-      font-size: 16px;
-      transition: transform .2s, color .2s;
-      line-height: 36px;
-    }
-    .project-card:hover .project-arrow {
-      transform: translate(2px, -2px);
-      color: var(--accent);
-    }
+    .project-arrow { color: var(--text-muted); font-size: 16px; transition: transform .2s, color .2s; line-height: 36px; }
+    .project-card:hover .project-arrow { transform: translate(2px, -2px); color: var(--accent); }
 
-    .project-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .project-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      line-height: 1.85;
-    }
-
+    .project-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .project-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.85; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 
     .tag {
-      font-size: 11px;
-      font-family: 'JetBrains Mono', monospace;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 2px 9px;
-      border-radius: 100px;
+      font-size: 11px; font-family: 'JetBrains Mono', monospace;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text-muted); padding: 2px 9px; border-radius: 100px;
     }
 
-    .more-projects {
-      text-align: center;
-      padding: 28px 0 0;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
+    .more-projects { text-align: center; padding: 28px 0 0; font-size: 13px; color: var(--text-muted); }
 
     /* ── Contact ──────────────────────────────────────────── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    @media (max-width: 580px) {
-      .contact-grid { grid-template-columns: 1fr; }
-    }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 580px) { .contact-grid { grid-template-columns: 1fr; } }
 
     .contact-card {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      color: var(--text);
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 20px; text-align: center;
+      text-decoration: none; color: var(--text);
       transition: border-color .2s, box-shadow .2s;
     }
 
-    .contact-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(108,99,255,.07);
-      color: var(--text);
-      text-decoration: none;
-    }
+    .contact-card:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,.07); color: var(--text); text-decoration: none; }
 
-    .contact-icon {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .contact-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 4px;
-    }
-
-    .contact-value {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-    }
+    .contact-icon { font-size: 22px; margin-bottom: 10px; }
+    .contact-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+    .contact-value { font-size: 13px; font-weight: 500; color: var(--text); word-break: break-all; }
 
     /* ── Footer ───────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 0;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 20px;
-    }
+    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 20px; }
 
-    /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 580px) {
       .nav-links { display: none; }
       .hero { padding: 130px 0 60px; }
@@ -389,122 +199,122 @@
 </head>
 <body>
 
-  <!-- ── Navigation ──────────────────────────────────────── -->
   <nav>
     <div class="nav-logo">C<span>.</span> Casey</div>
     <ul class="nav-links">
-      <li><a href="#about">关于</a></li>
-      <li><a href="#skills">技能</a></li>
-      <li><a href="#projects">项目</a></li>
-      <li><a href="#contact">联系</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- ── Hero ─────────────────────────────────────────────── -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">嵌入式工程师 · 嵌入式开发</div>
+      <div class="hero-eyebrow">Embedded Firmware Engineer</div>
       <h1>
-        我是 Casey，<br>
-        <em>嵌入式工程师。</em>
+        Hi, I'm Casey —<br>
+        <em>embedded systems</em> developer.
       </h1>
       <p class="hero-desc">
-        专注 MCU 固件开发 / FreeRTOS 实时系统 / CAN 总线通信，
-        热衷把真实项目经验整理成可复用的工程框架。
+        I build real-time firmware for MCU-based controllers — RTOS task scheduling,
+        CAN-bus communication, multi-sensor data acquisition, and production-ready
+        embedded architectures.
       </p>
       <div class="hero-links">
         <a href="https://github.com/TechCasey" class="btn btn-primary" target="_blank">
           GitHub ↗
         </a>
         <a href="mailto:lqz8802@gmail.com" class="btn btn-outline">✉ lqz8802@gmail.com</a>
-        <a href="#projects" class="btn btn-outline">看项目</a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ── About ───────────────────────────────────────────── -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-label">About</div>
-      <div class="section-title">关于我</div>
-      <div class="section-sub">以下是我的基本背景</div>
+      <div class="section-title">About Me</div>
+      <div class="section-sub">Background & current focus</div>
 
       <div class="about-grid">
         <div class="about-card">
-          <h3>🎯 现在做什么</h3>
+          <h3>🎯 What I Do</h3>
           <p>
-            车载控制器固件开发，CAN 总线通信架构设计，
-            FreeRTOS 多任务系统构建与量产调试。主要面向农业机械电子方向，
-            负责从方案设计到量产落地的完整流程。
+            MCU firmware architecture and development for vehicle controllers.
+            CAN-bus communication design, FreeRTOS/RT-Thread multi-tasking, and
+            production-level debugging — from prototype to mass production.
           </p>
         </div>
         <div class="about-card">
-          <h3>🛠 常用技术栈</h3>
+          <h3>🛠 Core Stack</h3>
           <p>
-            GD32A50x / STM32 系列 · FreeRTOS 实时系统 · CAN2.0/CAN FD ·
-            Keil MDK / J-Link 调试 · SEGGER RTT 实时日志
+            GD32A50x / GD32F4xx / STM32 · FreeRTOS / RT-Thread ·
+            CAN 2.0B / CAN FD · Keil MDK / IAR · J-Link · SEGGER RTT
           </p>
         </div>
         <div class="about-card">
-          <h3>📂 项目风格</h3>
+          <h3>📂 Engineering Style</h3>
           <p>
-            追求代码可读性和可维护性，习惯把业务逻辑与驱动层解耦，
-            用 RTOS 任务划分清晰系统边界，方便后续迭代和维护。
+            Clean separation between business logic and hardware abstraction.
+            RTOS task boundaries defined by system concerns. Documentation-driven,
+            reproducible builds.
           </p>
         </div>
         <div class="about-card">
-          <h3>🌱 持续学习</h3>
+          <h3>🌱 Learning</h3>
           <p>
-            正在深入 RTOS 内核原理和嵌入式图形界面方向，
-            整理工作中的踩坑经验，分享在 GitHub 和个人主页。
+            RTOS kernel internals, embedded GUI frameworks, and CI/CD for
+            firmware. I distill field experience into reusable reference repos.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Skills ──────────────────────────────────────────── -->
   <section class="section section-top">
     <div class="container">
       <div class="section-label">Skills</div>
-      <div class="section-title">技术栈</div>
-      <div class="section-sub">目前掌握的技术方向</div>
+      <div class="section-title">Skills & Tools</div>
+      <div class="section-sub">Technologies I work with regularly</div>
 
       <div class="skills-list">
         <div class="skill-chip"><div class="skill-dot"></div>FreeRTOS</div>
+        <div class="skill-chip"><div class="skill-dot"></div>RT-Thread</div>
         <div class="skill-chip"><div class="skill-dot"></div>GD32A50x</div>
+        <div class="skill-chip"><div class="skill-dot"></div>GD32F4xx</div>
         <div class="skill-chip"><div class="skill-dot"></div>STM32F4</div>
+        <div class="skill-chip"><div class="skill-dot"></div>ARM Cortex-M4</div>
         <div class="skill-chip"><div class="skill-dot"></div>ARM Cortex-M33</div>
-        <div class="skill-chip"><div class="skill-dot"></div>CAN2.0</div>
+        <div class="skill-chip"><div class="skill-dot"></div>CAN 2.0B</div>
         <div class="skill-chip"><div class="skill-dot"></div>CAN FD</div>
-        <div class="skill-chip"><div class="skill-dot"></div>UART</div>
+        <div class="skill-chip"><div class="skill-dot"></div>UART / RS485</div>
         <div class="skill-chip"><div class="skill-dot"></div>SPI</div>
-        <div class="skill-chip"><div class="skill-dot"></div>I2C</div>
+        <div class="skill-chip"><div class="skill-dot"></div>I²C</div>
         <div class="skill-chip"><div class="skill-dot"></div>PWM</div>
-        <div class="skill-chip"><div class="skill-dot"></div>ADC</div>
+        <div class="skill-chip"><div class="skill-dot"></div>ADC / DMA</div>
         <div class="skill-chip"><div class="skill-dot"></div>Keil MDK</div>
+        <div class="skill-chip"><div class="skill-dot"></div>IAR EWARM</div>
         <div class="skill-chip"><div class="skill-dot"></div>J-Link</div>
         <div class="skill-chip"><div class="skill-dot"></div>SEGGER RTT</div>
-        <div class="skill-chip"><div class="skill-dot"></div>GCC</div>
-        <div class="skill-chip"><div class="skill-dot"></div>IAR</div>
-        <div class="skill-chip"><div class="skill-dot"></div>Flash 存储</div>
-        <div class="skill-chip"><div class="skill-dot"></div>看门狗</div>
+        <div class="skill-chip"><div class="skill-dot"></div>GCC / Make</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Git</div>
+        <div class="skill-chip"><div class="skill-dot"></div>LabVIEW</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Python</div>
       </div>
     </div>
   </section>
 
-  <!-- ── Projects ─────────────────────────────────────────── -->
   <section class="section section-top">
     <div class="container">
       <div class="section-label">Projects</div>
-      <div class="section-title">项目展示</div>
-      <div class="section-sub">公开可访问的开源项目，持续更新中</div>
+      <div class="section-title">Featured Work</div>
+      <div class="section-sub">Public repositories showcasing embedded platform design</div>
 
       <div class="projects">
 
-        <!-- 项目 1 -->
         <a href="https://github.com/TechCasey/Controller-FreeRTOS" class="project-card" target="_blank">
           <div class="project-top">
             <div class="project-icon">⚡</div>
@@ -512,87 +322,162 @@
           </div>
           <div class="project-name">Controller-FreeRTOS</div>
           <div class="project-desc">
-            基于 GD32A50x (ARM Cortex-M33) 的 FreeRTOS V10.2.1 工程样例库，
-            涵盖 ISR→任务队列、定时器→信号量、看门狗、互斥量四大编程模式，
-            附详细步骤注释和 API 速查表，适合工程落地参考。
+            GD32A50x (Cortex-M33) + FreeRTOS V10.2.1 engineering reference.
+            Covers ISR→queue, software timer→semaphore, watchdog, mutex patterns
+            with annotated source, step-by-step build notes, and API quick-reference cards.
           </div>
           <div class="project-tags">
             <span class="tag">FreeRTOS</span>
             <span class="tag">GD32A50x</span>
             <span class="tag">CAN</span>
             <span class="tag">Keil MDK</span>
-            <span class="tag">2026</span>
           </div>
         </a>
 
-        <!-- 项目 2：占位 -->
-        <div class="project-card" style="cursor:default;">
+        <a href="https://github.com/TechCasey/Controller-Weight" class="project-card" target="_blank">
           <div class="project-top">
-            <div class="project-icon">🔧</div>
-            <div class="project-arrow" style="opacity:.3;">↗</div>
+            <div class="project-icon">⚖️</div>
+            <div class="project-arrow">↗</div>
           </div>
-          <div class="project-name">你的下一个项目</div>
+          <div class="project-name">Controller-Weight</div>
           <div class="project-desc">
-            项目描述占位。在 HTML 中搜索「你的下一个项目」，
-            替换这段文字即可添加更多项目。每个卡片有图标、标题、描述和标签。
+            GD32F407 vehicle dynamic weighing platform. Dual CAN-bus, RS485 multi-sensor
+            polling, real-time signal processing pipeline, and OTA firmware upgrade via CAN.
           </div>
           <div class="project-tags">
-            <span class="tag">待补充</span>
+            <span class="tag">GD32F407</span>
+            <span class="tag">FreeRTOS</span>
+            <span class="tag">CAN</span>
+            <span class="tag">RS485</span>
+            <span class="tag">OTA</span>
           </div>
-        </div>
+        </a>
 
-        <!-- 项目 3：占位 -->
-        <div class="project-card" style="cursor:default;">
+        <a href="https://github.com/TechCasey/Controller-VariableSpray" class="project-card" target="_blank">
           <div class="project-top">
-            <div class="project-icon">🚀</div>
-            <div class="project-arrow" style="opacity:.3;">↗</div>
+            <div class="project-icon">🌾</div>
+            <div class="project-arrow">↗</div>
           </div>
-          <div class="project-name">另一个项目</div>
+          <div class="project-name">Controller-VariableSpray</div>
           <div class="project-desc">
-            复制上方整段 project-card 块即可无限添加新项目。
-            搜索「项目 2：占位」快速定位。
+            GD32A503 (automotive-grade) variable rate spraying controller with RT-Thread.
+            CAN-bus command parsing, multi-channel PWM nozzle outputs, watchdog safety.
           </div>
           <div class="project-tags">
-            <span class="tag">待补充</span>
+            <span class="tag">GD32A503</span>
+            <span class="tag">RT-Thread</span>
+            <span class="tag">CAN</span>
+            <span class="tag">PWM</span>
           </div>
-        </div>
+        </a>
+
+        <a href="https://github.com/TechCasey/Controller-MetalDetector" class="project-card" target="_blank">
+          <div class="project-top">
+            <div class="project-icon">🔍</div>
+            <div class="project-arrow">↗</div>
+          </div>
+          <div class="project-name">Controller-MetalDetector</div>
+          <div class="project-desc">
+            GD32A503 metal detection system. 5-channel ADC signal envelope detection,
+            threshold comparison, I²C EEPROM parameter storage, CAN alarm reporting.
+          </div>
+          <div class="project-tags">
+            <span class="tag">GD32A503</span>
+            <span class="tag">RT-Thread</span>
+            <span class="tag">ADC</span>
+            <span class="tag">I²C</span>
+            <span class="tag">CAN</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/TechCasey/Controller-ImpactSensor" class="project-card" target="_blank">
+          <div class="project-top">
+            <div class="project-icon">💥</div>
+            <div class="project-arrow">↗</div>
+          </div>
+          <div class="project-name">Controller-ImpactSensor</div>
+          <div class="project-desc">
+            GD32F407 impact force sensing platform. Real-time DSP signal processing
+            (envelope detection, peak detection, temperature compensation),
+            60-second auto calibration, dual CAN reporting.
+          </div>
+          <div class="project-tags">
+            <span class="tag">GD32F407</span>
+            <span class="tag">RT-Thread</span>
+            <span class="tag">DSP</span>
+            <span class="tag">ADC</span>
+            <span class="tag">CAN</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/TechCasey/PointerMeter-Recognition" class="project-card" target="_blank">
+          <div class="project-top">
+            <div class="project-icon">📐</div>
+            <div class="project-arrow">↗</div>
+          </div>
+          <div class="project-name">PointerMeter-Recognition</div>
+          <div class="project-desc">
+            Computer vision project for automatic pointer meter reading recognition.
+            Image processing pipeline for dial detection, pointer segmentation, and angle calculation.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Computer Vision</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/TechCasey/LabVIEW-Tableware-Sorting" class="project-card" target="_blank">
+          <div class="project-top">
+            <div class="project-icon">🍽️</div>
+            <div class="project-arrow">↗</div>
+          </div>
+          <div class="project-name">LabVIEW-Tableware-Sorting</div>
+          <div class="project-desc">
+            LabVIEW-based automated tableware sorting and visual inspection system.
+            Combines machine vision and PLC control for industrial sorting lines.
+          </div>
+          <div class="project-tags">
+            <span class="tag">LabVIEW</span>
+            <span class="tag">Vision</span>
+            <span class="tag">Automation</span>
+          </div>
+        </a>
 
       </div>
 
       <div class="more-projects">
-        更多项目整理中 · 关注 GitHub 第一时间获取更新
+        More projects in progress · Follow on GitHub for updates
       </div>
     </div>
   </section>
 
-  <!-- ── Contact ─────────────────────────────────────────── -->
   <section class="section section-top">
     <div class="container">
       <div class="section-label">Contact</div>
-      <div class="section-title">联系方式</div>
-      <div class="section-sub">有合作或交流想法欢迎联系</div>
+      <div class="section-title">Get in Touch</div>
+      <div class="section-sub">Open to collaboration, questions, or just a chat</div>
 
       <div class="contact-grid">
         <a href="mailto:lqz8802@gmail.com" class="contact-card">
-          <div class="contact-icon">✉</div>
-          <div class="contact-label">邮箱</div>
+          <div class="contact-icon">✉️</div>
+          <div class="contact-label">Email</div>
           <div class="contact-value">lqz8802@gmail.com</div>
         </a>
         <a href="https://github.com/TechCasey" class="contact-card" target="_blank">
-          <div class="contact-icon">⌨</div>
+          <div class="contact-icon">⌨️</div>
           <div class="contact-label">GitHub</div>
           <div class="contact-value">github.com/TechCasey</div>
         </a>
         <a href="https://techcasey.github.io/TechCasey" class="contact-card" target="_blank">
           <div class="contact-icon">🌐</div>
-          <div class="contact-label">个人主页</div>
+          <div class="contact-label">Website</div>
           <div class="contact-value">GitHub Pages</div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ── Footer ───────────────────────────────────────────── -->
   <footer>
     <div class="container">
       <p>Built with HTML · Hosted on GitHub Pages · &copy; 2026 Casey</p>
